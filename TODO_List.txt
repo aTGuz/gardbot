@@ -3,20 +3,40 @@ GARDBOT 0.1
 
 
 
-Projetos interessantes para vermos:
-===================================
+TODO IMEDIATO:
+==============
 
-- Garduino original (acho): http://garduino.dirtnail.com/  (foi substituido pelo GrowerBot)
-
-
-IFTTT:
-======
-PLataforma nova, de integracao.. parece ser bem interessante (nao tem muito a ver, mas achei muito interessante)
-- https://en.wikipedia.org/wiki/IFTTT
-- https://www.pocket-lint.com/smart-home/news/130082-what-is-ifttt-and-how-does-it-work
+OKOK !!! - Criar projeto no Github e dar as permissoes necessarias
+- definirmos onde colocaremos o bug tracker e software que lista os itens a serem desenvolvidos ? pode ser o mesmo, eu acho. Tem alguma sugestao ?
+- Definirmos o hardware que usaremos e como será a alimentacao
 
 
+Hardware imaginado:
+===================
 
+- Arduino (o ideal é que consigamos fazer um soft que rode no Uno, Mega, ESP e outros. Podemos mudar para Rasberry, mas, nao temos.. (eu nao tenho) e ele é mais caro e eu nao sei prog nele ainda... mas podemos ir para la se vce achar que vale. Eu acho que o arduino tem tudo o que precisa e é mais barato
+- 1 rele com 6 portas
+- Solenoides para abrir e fechar a agua  (Será que precisa ? ou o ligar/desligar da bomba ja resolve?) (acho que para regar 6, precisaremos das solenoides)
+- Bomba de aquario
+- reservatorio de agua (garrafas pet? balde?)
+- Fios
+- Sensor de luminosidade
+- Sensor de humidade ar
+- Sensor de humidade ar
+- Sensor de humidade solo
+- Sensor de temperatura ar
+- Sensor de temperatura solo
+- modulo WiFi
+- Modulo RCT (data e hora)
+- Leitor cartao SD
+- Leitor RFID (?)
+- Leds
+- Painel LCD pequeno
+- Cartao SD
+- Protoboard
+- Alimentacao (tomada ? Se sim, precisamos de fonte) (bateria?) (sera que aguenta... acho que sim) (se bem que pelo rele, nao tem como fugirmos de usar tomada)
+- Mangueiras para regar
+- Conectores das mangueiras, de forma que possamos fechar elas mecanicamente, se desejarmos, para nao ter problemas de rega onde nao tem planta
 
 Funcionalidades desejadas:
 ==========================
@@ -38,7 +58,7 @@ Funcionalidades desejadas:
 - POder ser acessado para obter status e dados do jardim, via WiFi e Internet
 - controlar e relatorios gardbot via app (acho que talvez nao precise de app. Usamos tudo via web mesmo e foda-se.. o que acha ?)
 - controlar e relatorios gardbot via web (navegador)
-
+- Leitor RFID para identificar a planta desejada de forma rapida ?
 
 // Avancadas:
 - o gardbot aprender, via sei la o que ou como, qual o melhor perfil de agua (quantidade/horario de rega/quantidade versus numero de regas (tipo rega pouco, mas mais vezes) .. sei la.. O arduino aprenderia e  usaria o melhor perfil possivel
@@ -55,3 +75,18 @@ Funcionalidades desejadas:
 
 // Caracteristicas conceituais que queremos:
 - formato e arquivos do cartao SD feitos de tal forma.. que seja facil abri-los e manipula-los no PC. Quem sabe até uma aplicacao que faça isto  (backups, exports sei la)
+
+
+Projetos interessantes para vermos:
+===================================
+
+- Garduino original (acho): http://garduino.dirtnail.com/  (foi substituido pelo GrowerBot)
+
+
+IFTTT:
+======
+PLataforma nova, de integracao.. parece ser bem interessante (nao tem muito a ver, mas achei muito interessante)
+- https://en.wikipedia.org/wiki/IFTTT
+- https://www.pocket-lint.com/smart-home/news/130082-what-is-ifttt-and-how-does-it-work
+
+
