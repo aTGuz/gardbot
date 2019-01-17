@@ -1,0 +1,57 @@
+GARDBOT 0.1
+===========
+
+
+
+Projetos interessantes para vermos:
+===================================
+
+- Garduino original (acho): http://garduino.dirtnail.com/  (foi substituido pelo GrowerBot)
+
+
+IFTTT:
+======
+PLataforma nova, de integracao.. parece ser bem interessante (nao tem muito a ver, mas achei muito interessante)
+- https://en.wikipedia.org/wiki/IFTTT
+- https://www.pocket-lint.com/smart-home/news/130082-what-is-ifttt-and-how-does-it-work
+
+
+
+
+Funcionalidades desejadas:
+==========================
+
+// Basicas:
+- Monitorar e logar temperatura do solo
+- Monitorar e logar humidade do solo
+- Monitorar e logar temperatura do ar
+- Monitorar e logar humidade do ar
+- monitorar e logar a luz ambiente
+- bombear agua em quantidade certa, se necessario
+- Salvar dados em cartao SD
+- Alarmes ? Informando usuario via sei la o que (sms, twitter, email) que uma planta está bem (relatorio diario) ou mal (eventos que possam ocorrer)
+- ter um LCD para exibir dados na hora ao vivo
+- possibilidade de regar pelo menos 6 plantas indepentendes
+- ter controle de data/tempo (Real Time Clock). para termos datas e horarios nos logs
+
+// Intermediaria
+- POder ser acessado para obter status e dados do jardim, via WiFi e Internet
+- controlar e relatorios gardbot via app (acho que talvez nao precise de app. Usamos tudo via web mesmo e foda-se.. o que acha ?)
+- controlar e relatorios gardbot via web (navegador)
+
+
+// Avancadas:
+- o gardbot aprender, via sei la o que ou como, qual o melhor perfil de agua (quantidade/horario de rega/quantidade versus numero de regas (tipo rega pouco, mas mais vezes) .. sei la.. O arduino aprenderia e  usaria o melhor perfil possivel
+- Facilitar de algum modo... o LOG de FOTOS usando cameras normais com time lapse (sei la , conseguir integrar dados com fotos de forma facil, para ser uma ferramenta de videolog de plantas tbem (tem vaaaaaaaaaaarias pessoas que fazem video log com timelapse das plantas)
+- Eu poder forçar uma rega mesmo remotamente. Algo como: eu decido que devo regar agora mas estou na praia. Consiugo regar, com a qtde que eu quiser, quem sabe até podendo escolher: fluxo continuo ou spray (nao sei como fariamos o spray)
+
+
+// Piracao:
+- Integracao com outros gardbots ? 
+- se integrado, gameficacao ?
+- posts da planta automaticos no twiter e outros ?
+
+
+
+// Caracteristicas conceituais que queremos:
+- formato e arquivos do cartao SD feitos de tal forma.. que seja facil abri-los e manipula-los no PC. Quem sabe até uma aplicacao que faça isto  (backups, exports sei la)
