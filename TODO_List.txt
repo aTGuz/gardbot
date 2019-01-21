@@ -59,6 +59,7 @@ Funcionalidades desejadas:
 - controlar e relatorios gardbot via app (acho que talvez nao precise de app. Usamos tudo via web mesmo e foda-se.. o que acha ?)
 - controlar e relatorios gardbot via web (navegador)
 - Leitor RFID para identificar a planta desejada de forma rapida ?
+- Adicionar uma webcam nele, para termos video e fotos quando quisermos
 
 // Avancadas:
 - o gardbot aprender, via sei la o que ou como, qual o melhor perfil de agua (quantidade/horario de rega/quantidade versus numero de regas (tipo rega pouco, mas mais vezes) .. sei la.. O arduino aprenderia e  usaria o melhor perfil possivel
