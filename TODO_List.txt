@@ -90,4 +90,11 @@ PLataforma nova, de integracao.. parece ser bem interessante (nao tem muito a ve
 - https://en.wikipedia.org/wiki/IFTTT
 - https://www.pocket-lint.com/smart-home/news/130082-what-is-ifttt-and-how-does-it-work
 
+LINKS:
+======
+
+https://www.hackster.io/vandenbrande/arduino-plant-watering-system-with-tft-lcd-afc6ea
+
+
+
 
