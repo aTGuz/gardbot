@@ -220,13 +220,5 @@ void ResetArduino()
 
 
 
-String Now()
-{
-	String retNow;
-
-	retNow = F("03/06/2018 04:20:00");
-
-	return retNow;
-}
 
 

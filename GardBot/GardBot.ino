@@ -4,12 +4,10 @@ GarBot
 
 */
 
-#include "BIB/Main/GardBot_Globals.h" 
-#include "BIB/Main/GardBot_Support.h" 
-
-#include "BIB/RTC/RTC_Main.h" 
 
 
+
+#include "BIB/Main/Gardbot_GeneralIncludes.h" 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,8 +28,12 @@ void setup()
 
 
     //RTC_SetCurrentDateTime(16, 2, 2019, 23, 42, 0, 6); // sabado 6
+    // Inicia o SD
 
 
+    digitalWrite(SD_PINO, HIGH);
+
+    delay(1000);
 
 
 }
@@ -46,6 +48,18 @@ void loop()
     //delay(1000);
 
     LogTerm(RTC_Now());
+
+    delay(1000);
+    
+    //SD_TestaCartao();
+
+
+    String ret = F("");
+
+
+    ret = SD_ApagaArquivo(String(F("teste.txt")));
+
+    LogTerm(ret);
 
     delay(1000);
 }

@@ -1,6 +1,4 @@
 
-#include "RTC_Krodal.h" 
-
 
 
 

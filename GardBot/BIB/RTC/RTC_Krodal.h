@@ -104,9 +104,9 @@ extern void _DS1302_togglewrite(uint8_t data, uint8_t release);
 
 
 // Set your own pins with these defines !
-#define DS1302_SCLK_PIN   7    // Arduino pin for the Serial Clock
-#define DS1302_IO_PIN     6    // Arduino pin for the Data I/O
-#define DS1302_CE_PIN     5    // Arduino pin for the Chip Enable
+#define DS1302_SCLK_PIN   RTC_CLK    // Arduino pin for the Serial Clock
+#define DS1302_IO_PIN     RTC_DATA    // Arduino pin for the Data I/O
+#define DS1302_CE_PIN     RTC_RST    // Arduino pin for the Chip Enable
 
 
 // Macros to convert the bcd values of the registers to normal
