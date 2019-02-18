@@ -10,8 +10,11 @@
 // SD
 #define SD_MAX_TENTATIVA_READ 	2
 #define SD_DELAY_TENTATIVA_READ 1000
-#define SD_PINO 				24
+#define SD_PINO 				53
 
 
 // define the debug mode
 #define ctDEBUG_MODE false
+
+// Buzzer
+#define BUZZER_PINO 32

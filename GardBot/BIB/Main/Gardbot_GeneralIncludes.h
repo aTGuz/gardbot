@@ -21,3 +21,6 @@
 
 // LEITOR SD MAIN
 #include "../SD/Gardbot_SD_Main.h" 
+
+// buzzer
+#include "../Buzzer/Gardbot_Buzzer_Main.h" 

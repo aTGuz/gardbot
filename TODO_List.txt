@@ -96,5 +96,20 @@ LINKS:
 https://www.hackster.io/vandenbrande/arduino-plant-watering-system-with-tft-lcd-afc6ea
 
 
+PARTS LIST:
+===========
+
+- Arduino Mega
+- Wires
+- Protoboard
+- DS 1302 RTC board
+- Battery for RTC (CR2032 Coin Battery 3V)
+- SD Card Reader
+- SD Card
+- Piezoeletric Buzzer
+- Sensitivity Digital DHT11 DHT-11 Temperature and Humidity Sensor 
+- 10k resistor - brown, black, orange, gold - for temp and hum sensor
+
+
 
 

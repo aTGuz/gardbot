@@ -33,6 +33,11 @@ void setup()
 
     digitalWrite(SD_PINO, HIGH);
 
+    // Inicia o BUZZER
+    pinMode(BUZZER_PINO, OUTPUT);
+
+
+
     delay(1000);
 
 
@@ -62,5 +67,8 @@ void loop()
     LogTerm(ret);
 
     delay(1000);
+
+    BUZZER_TocaSom(F("SUCESSO"));
+    
 }
 
