@@ -28,14 +28,13 @@ void setup()
 
 
     //RTC_SetCurrentDateTime(16, 2, 2019, 23, 42, 0, 6); // sabado 6
-    // Inicia o SD
 
 
+    // initiate sd card
     digitalWrite(SD_PINO, HIGH);
 
     // Inicia o BUZZER
     pinMode(BUZZER_PINO, OUTPUT);
-
 
 
     delay(1000);
@@ -69,6 +68,13 @@ void loop()
     delay(1000);
 
     BUZZER_TocaSom(F("SUCESSO"));
+
+    delay(1000);
+
+    LogTerm(String(F("Humidity: ")) + TEMPHUM_ReadAirHumidity());
+        
+    LogTerm(String(F("Temperature: ")) + TEMPHUM_ReadAirTemperature());
+
     
 }
 

@@ -24,3 +24,9 @@
 
 // buzzer
 #include "../Buzzer/Gardbot_Buzzer_Main.h" 
+
+
+// temp and hum sensor dht11
+#include "DHT.h"
+#include "../DHT11/Gardbot_TempHum_Main.h" 
+

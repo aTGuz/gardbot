@@ -18,3 +18,6 @@
 
 // Buzzer
 #define BUZZER_PINO 32
+
+// DHT11 - Temp and Hum sensor
+#define DHT11_PINO 22
