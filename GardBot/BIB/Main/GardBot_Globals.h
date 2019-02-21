@@ -21,3 +21,13 @@
 
 // DHT11 - Temp and Hum sensor
 #define DHT11_PINO 22
+
+// State tracking var
+String gOperation_Mode = F("");
+
+
+
+void InitiateVars()
+{
+	gOperation_Mode = F("STANDBY")
+}

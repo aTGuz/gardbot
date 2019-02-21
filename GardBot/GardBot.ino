@@ -47,6 +47,8 @@ void setup()
 void loop() 
 {
 
+
+    /*
     //RTC_ShowCurrentDateTimeToSerial();
 
     //delay(1000);
@@ -72,9 +74,30 @@ void loop()
     delay(1000);
 
     LogTerm(String(F("Humidity: ")) + TEMPHUM_ReadAirHumidity());
-        
-    LogTerm(String(F("Temperature: ")) + TEMPHUM_ReadAirTemperature());
 
+    LogTerm(String(F("Temperature: ")) + TEMPHUM_ReadAirTemperature());
+    */
+
+
+
+
+    if (gOperation_Mode == F("STANDBY"))
+    {
+
+    }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
