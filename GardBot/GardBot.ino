@@ -26,6 +26,10 @@ void setup()
 
     Serial.begin(115200);       
 
+    LogTerm (F("Garbot 1.0"));
+    LogTerm (F("=========="));
+    LogTerm (F(""));
+
 
     //RTC_SetCurrentDateTime(16, 2, 2019, 23, 42, 0, 6); // sabado 6
 
@@ -37,6 +41,7 @@ void setup()
     pinMode(BUZZER_PINO, OUTPUT);
 
 
+
     delay(1000);
 
 
@@ -46,6 +51,21 @@ void setup()
 // INTERNA ARDUINO: LOOP ETERNO
 void loop() 
 {
+
+
+
+    LogTerm(String(F("SoilSensor_GetSoilHumidity = ")) + String(SoilSensor_GetSoilHumidity()));
+
+    //LogTerm(String(F("LightSensor_GetAmbientLightValue = ")) + String(LightSensor_GetAmbientLightValue()));
+
+    //LogTerm(F("------------------"));
+
+
+    //delay(500);
+
+    //LogTerm(String(F("Humidity: ")) + TEMPHUM_ReadAirHumidity());
+
+    //LogTerm(String(F("Temperature: ")) + TEMPHUM_ReadAirTemperature());
 
 
     /*
@@ -76,15 +96,16 @@ void loop()
     LogTerm(String(F("Humidity: ")) + TEMPHUM_ReadAirHumidity());
 
     LogTerm(String(F("Temperature: ")) + TEMPHUM_ReadAirTemperature());
-    */
-
-
-
 
     if (gOperation_Mode == F("STANDBY"))
     {
 
     }
+    */
+
+
+
+
     
 }
 

@@ -37,7 +37,7 @@
 String TEMPHUM_ReadAirHumidity() 
 {
 
-    delay(100);
+    delay(300);
     // Initialize DHT sensor.
     // Note that older versions of this library took an optional third parameter to
     // tweak the timings for faster processors.  This parameter is no longer needed
@@ -75,7 +75,7 @@ String TEMPHUM_ReadAirHumidity()
 String TEMPHUM_ReadAirTemperature() 
 {
     
-    delay(100);
+    delay(300);
 
     // Initialize DHT sensor.
     // Note that older versions of this library took an optional third parameter to

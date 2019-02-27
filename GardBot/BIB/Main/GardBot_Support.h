@@ -71,6 +71,14 @@ void LogTerm (unsigned long Texto)
 }
 
 // Loga uma informacao no terminal - OVERRIDE int
+void LogTerm (long Texto)
+{
+	Serial.println(Texto);
+	Serial.flush();
+	serialEventRun();
+}
+
+// Loga uma informacao no terminal - OVERRIDE int
 void LogTerm (double Texto)
 {
 

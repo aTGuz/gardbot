@@ -30,3 +30,9 @@
 #include "DHT.h"
 #include "../DHT11/Gardbot_TempHum_Main.h" 
 
+// soil sensor
+#include "../SoilSensor/Gardbot_SoilSensor_Main.h" 
+
+
+// light sensor
+#include "../LightSensor/Gardbot_LightSensor_Main.h" 

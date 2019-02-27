@@ -22,12 +22,24 @@
 // DHT11 - Temp and Hum sensor
 #define DHT11_PINO 22
 
+
+// photoresistor sensor
+#define LIGHT_SENSOR_PINO A0
+
+// Soil Moisture and Temp Sensor
+#define SOIL_SENSOR A1
+
+
 // State tracking var
-String gOperation_Mode = F("");
+String gOperation_Mode;
 
 
 
 void InitiateVars()
 {
-	gOperation_Mode = F("STANDBY")
+
+	gOperation_Mode = F("");
+
+
+	gOperation_Mode = F("STANDBY");
 }
