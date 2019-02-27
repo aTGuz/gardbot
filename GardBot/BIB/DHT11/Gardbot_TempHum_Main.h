@@ -34,10 +34,160 @@
 
 
 
-String TEMPHUM_ReadAirHumidity() 
+
+long TEMPHUM_ReadAirHumidity() 
+{
+
+    delay(200);
+
+
+    // Initialize DHT sensor.
+    // Note that older versions of this library took an optional third parameter to
+    // tweak the timings for faster processors.  This parameter is no longer needed
+    // as the current DHT reading algorithm adjusts itself to work on faster procs.
+    DHT dht(DHTPIN, DHTTYPE);
+
+
+    // initiate Temp and Hum sensor
+    dht.begin();
+
+
+    long sensorValue1 = -1;
+    long FinalSensorValue = -1;
+
+    int CountRead = 0;
+
+    int TotalReadTimesForAvg = 10;
+
+    long SumReadValue = 0;
+
+    
+
+    while ((CountRead <= 100) && (FinalSensorValue <= 0))
+    {
+        CountRead++;
+
+
+        int x = 1;
+
+        while (x <= TotalReadTimesForAvg)
+        {
+            sensorValue1 = -1;
+
+            // Reading temperature or humidity takes about 250 milliseconds!
+            // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+            float h = dht.readHumidity();
+
+            // Check if any reads failed and exit early (to try again).
+            if (isnan(h)) 
+            {
+                LogTerm(F("naooooo..."));
+            }
+            else
+            {
+                SumReadValue += (float) h;
+                x++;
+            }
+
+
+        }
+
+
+        FinalSensorValue = SumReadValue / TotalReadTimesForAvg;
+
+        //LogTerm(String(F("CountRead = ")) + String(CountRead) + String(F(" | sensorValue1 = ")) + String(sensorValue1));
+
+    }
+
+    return FinalSensorValue;
+    
+}
+
+
+
+
+
+long TEMPHUM_ReadAirTemperature() 
+{
+    
+    delay(200);
+
+
+    // Initialize DHT sensor.
+    // Note that older versions of this library took an optional third parameter to
+    // tweak the timings for faster processors.  This parameter is no longer needed
+    // as the current DHT reading algorithm adjusts itself to work on faster procs.
+    DHT dht(DHTPIN, DHTTYPE);
+
+
+    // initiate Temp and Hum sensor
+    dht.begin();
+
+
+    long sensorValue1 = -1;
+    long FinalSensorValue = -1;
+
+    int CountRead = 0;
+
+    int TotalReadTimesForAvg = 10;
+
+    long SumReadValue = 0;
+
+    
+
+    while ((CountRead <= 100) && (FinalSensorValue <= 0))
+    {
+        CountRead++;
+
+
+        int x = 1;
+
+        while (x <= TotalReadTimesForAvg)
+        {
+            sensorValue1 = -1;
+
+            // Reading temperature or humidity takes about 250 milliseconds!
+            // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+            float h = dht.readTemperature();
+
+            // Check if any reads failed and exit early (to try again).
+            if (isnan(h)) 
+            {
+                LogTerm(F("naooooo..."));
+            }
+            else
+            {
+                SumReadValue += (float) h;
+                x++;
+            }
+
+
+        }
+
+
+        FinalSensorValue = SumReadValue / TotalReadTimesForAvg;
+
+        //LogTerm(String(F("CountRead = ")) + String(CountRead) + String(F(" | sensorValue1 = ")) + String(sensorValue1));
+
+    }
+
+    return FinalSensorValue;
+    
+    
+}
+
+
+
+
+
+
+
+String TEMPHUM_ReadAirHumidity_OLD() 
 {
 
     delay(300);
+
+
     // Initialize DHT sensor.
     // Note that older versions of this library took an optional third parameter to
     // tweak the timings for faster processors.  This parameter is no longer needed
@@ -72,7 +222,7 @@ String TEMPHUM_ReadAirHumidity()
 
 
 
-String TEMPHUM_ReadAirTemperature() 
+String TEMPHUM_ReadAirTemperature_OLD() 
 {
     
     delay(300);

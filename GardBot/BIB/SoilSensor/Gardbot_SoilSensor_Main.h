@@ -36,7 +36,7 @@ long SoilSensor_GetSoilHumidity()
         }
 
 
-        FinalSensorValue = SumReadValue / TotalReadTimesForAvg + 1;
+        FinalSensorValue = SumReadValue / TotalReadTimesForAvg;
 
         //LogTerm(String(F("CountRead = ")) + String(CountRead) + String(F(" | sensorValue1 = ")) + String(sensorValue1));
 

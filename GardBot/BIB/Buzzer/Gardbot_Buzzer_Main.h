@@ -29,7 +29,7 @@ void BUZZER_TocaSom(String TipoSom)
 		delay(tempo);
 		noTone(BUZZER_PINO);	
 
-		LogTerm("passei");	
+		//LogTerm("passei");	
 	}
 
 
