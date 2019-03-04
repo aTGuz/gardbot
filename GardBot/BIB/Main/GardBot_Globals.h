@@ -33,13 +33,31 @@
 // State tracking var
 String gOperation_Mode;
 
+// vars that check if screen is rendered for a particular operation mode
+// also can be used to check if its the first time a operational mode is reached
+bool gRendered_INITIALIZE;
+bool gRendered_OPERATION;
+bool gRendered_LOGDATA;
 
+
+
+// log at every 1S, 10S, 30S, 1M, 1H, 1D , etc. S = seconds, M = minutes, H = hours, D = Days
+String gLOG_LogAtEvery;
+
+String gLOG_LastLogDateTime;
 
 void InitiateVars()
 {
+	gOperation_Mode = F("INITIALIZE");
 
-	gOperation_Mode = F("");
+
+	gRendered_INITIALIZE = false;
+	gRendered_OPERATION = false;
+	gRendered_LOGDATA = false;
+
+	gLOG_LogAtEvery = F("3S");
+	gLOG_LastLogDateTime = F("-1");
 
 
-	gOperation_Mode = F("STANDBY");
+
 }

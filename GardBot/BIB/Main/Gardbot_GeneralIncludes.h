@@ -36,3 +36,7 @@
 
 // light sensor
 #include "../LightSensor/Gardbot_LightSensor_Main.h" 
+
+
+// Logging functions
+#include "../LOG/Gardbot_LOG_Main.h" 

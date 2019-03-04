@@ -9,22 +9,127 @@ GarBot
 
 #include "BIB/Main/Gardbot_GeneralIncludes.h" 
 
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-//  INTERNAS ARDUINO
-//  ================
+//  EXECUTION PROCS
+//  ===============
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
-// INTERNA ARDUINO: SETUP
+void EXEC_INITIALIZE()
+{
+    if (gRendered_INITIALIZE == false)
+    {
+        LogTerm(F("== [Actual Mode: INITIALIZE] =="));
+
+        gRendered_INITIALIZE = true;
+    }  
+
+    gOperation_Mode = F("LOGDATA");
+}
+
+void EXEC_OPERATION()
+{
+    if (gRendered_OPERATION == false)
+    {
+        LogTerm(F("== [Actual Mode: OPERATION] =="));
+
+        gRendered_OPERATION = true;
+    }     
+}
+
+void EXEC_LOGDATA()
+{
+    if (gRendered_LOGDATA == false)
+    {
+        LogTerm(F("== [Actual Mode: LOGDATA] =="));
+
+        gRendered_LOGDATA = true;
+    }     
+
+
+    if (LOG_IsLogTime())
+    {
+        //LogTerm(RTC_Now() + String(F(" - Do Log !"))); 
+
+        RunAllSensorsTest();
+
+    }
+
+
+}
+
+
+void RunAllSensorsTest()
+{
+
+    LogTerm(F("--------------------------------------------------------------"));
+
+    //LogTerm(F("aqui"));
+
+    LogTerm(String(F("RTC_Now:                            ")) + RTC_Now());
+
+    LogTerm(String(F("SoilSensor_GetSoilHumidity =        ")) + String(SoilSensor_GetSoilHumidity()));
+
+    LogTerm(String(F("LightSensor_GetAmbientLightValue =  ")) + String(LightSensor_GetAmbientLightValue()));
+
+    LogTerm(String(F("TEMPHUM_ReadAirHumidity:            ")) + TEMPHUM_ReadAirHumidity());
+
+    LogTerm(String(F("TEMPHUM_ReadAirTemperature:         ")) + TEMPHUM_ReadAirTemperature());
+
+
+    String ret = F("");
+
+    ret = SD_ApagaArquivo(String(F("oplkjuhf.txt")));
+
+    if (Left(ret, 36) == F("0|Nao foi possivel apagar o arquivo:"))
+    {
+        LogTerm(String(F("SD Test:                            SUCESSO!")));
+    }
+    else
+    {
+        LogTerm(String(F("SD Test:                            ERRO: ")) + ret);
+    }
+
+
+
+
+
+
+
+}
+
+void TestInterrupts()
+{
+    
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  MAIN ARDUINO
+//  ============
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 void setup()
 {  
 
-    Serial.begin(115200);       
+    Serial.begin(115200);     
+
+    InitiateVars();  
 
     LogTerm (F("Garbot 1.0"));
     LogTerm (F("=========="));
@@ -48,11 +153,43 @@ void setup()
 }
 
 
+
+
+
 // INTERNA ARDUINO: LOOP ETERNO
 void loop() 
 {
 
 
+    //delay(50);
+
+
+    if (gOperation_Mode == F("INITIALIZE"))
+    {
+        EXEC_INITIALIZE();
+    }
+
+    if (gOperation_Mode == F("OPERATION"))
+    {
+        EXEC_OPERATION();
+    }
+
+    if (gOperation_Mode == F("LOGDATA"))
+    {
+        EXEC_LOGDATA();
+    }
+
+
+    TestInterrupts();
+
+
+
+    /*
+
+    LogTerm(F("--------------------------------------------------------------"));
+
+    
+    LogTerm(String(F("RTC_Now:                            ")) + RTC_Now());
 
     LogTerm(String(F("SoilSensor_GetSoilHumidity =        ")) + String(SoilSensor_GetSoilHumidity()));
 
@@ -61,9 +198,6 @@ void loop()
     LogTerm(String(F("TEMPHUM_ReadAirHumidity:            ")) + TEMPHUM_ReadAirHumidity());
 
     LogTerm(String(F("TEMPHUM_ReadAirTemperature:         ")) + TEMPHUM_ReadAirTemperature());
-
-    LogTerm(String(F("RTC_Now:                            ")) + RTC_Now());
-
 
 
     String ret = F("");
@@ -74,12 +208,7 @@ void loop()
 
     BUZZER_TocaSom(F("SUCESSO"));
 
-    LogTerm(F("------------------------------------------------------"));
-
-
-    //delay(500);
-
-    
+    */
 
     
     
@@ -89,6 +218,8 @@ void loop()
 
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
