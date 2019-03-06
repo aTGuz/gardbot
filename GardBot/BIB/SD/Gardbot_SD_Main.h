@@ -19,9 +19,9 @@ String SD_TestaCartao()
 	// not over 50 MHz. Try a lower speed if SPI errors occur.
 	if (!SD.cardBegin(SD_PINO, SPI_SIXTEENTH_SPEED))
 	{
-		LogTerm(F("SD: Falha na inicializacao do cartao SD"));
+		LogTerm(F("SD: Failed initializating SD card"));
 
-		ret = F("0|Falha na inicializacao do cartao SD");
+		ret = F("0|Failed initializating SD card");
 		return ret;	
 	}
 
@@ -33,9 +33,9 @@ String SD_TestaCartao()
 
 	if (cardSize == 0) 
 	{
-		LogTerm(F("SD: Falha ao obter o tamanho do cartao SD"));
+		LogTerm(F("SD: Failed getting the size of the SD card"));
 
-		ret = F("0|Falha ao obter o tamanho do cartao SD");
+		ret = F("0|Failed getting the size of the SD card");
 		return ret;	
 	}
 
@@ -86,7 +86,7 @@ String SD_TestaCartao()
 String SD_InicializaCartaoSD(SdFat &LeitorSD)
 {
 
-	String ret = F("1|SD Inicializado");
+	String ret = F("1|SD Initilized");
 
 	int ContaTentativa = 0;
 	bool SucessoTentativa = false;
@@ -95,11 +95,11 @@ String SD_InicializaCartaoSD(SdFat &LeitorSD)
 	// not over 50 MHz. Try a lower speed if SPI errors occur.
 	if (!LeitorSD.begin(SD_PINO, SPI_SIXTEENTH_SPEED))
 	{
-		LogTerm(F("SD: Falha na inicializacao do cartao SD"));
+		LogTerm(F("SD: Failed initializating SD card"));
 
 		while ((ContaTentativa <= SD_MAX_TENTATIVA_READ) && (SucessoTentativa == false))
 		{	
-			LogTerm(F("SD: Realizando nova tentativa..."));
+			LogTerm(F("SD: Trying again..."));
 
 			// desliga sd
 			pinMode(SD_PINO, OUTPUT);
@@ -123,7 +123,7 @@ String SD_InicializaCartaoSD(SdFat &LeitorSD)
 		}
 
 
-		ret = F("-1|Falha na inicializacao do cartao SD");
+		ret = F("-1|Failed initializating SD card");
 
 		return ret;	
 	}
@@ -144,7 +144,7 @@ String SD_InicializaCartaoSD(SdFat &LeitorSD)
 String SD_AbreArqTexto(String FullPathFile, SdFat &LeitorSD, File &objArquivo, String RetryOrCheck)
 {
 
-	String ret = F("1|Arquivo Aberto");
+	String ret = F("1|File opened");
 
 	int ContaTentativa = 0;
 	bool SucessoTentativa = false;
@@ -159,12 +159,12 @@ String SD_AbreArqTexto(String FullPathFile, SdFat &LeitorSD, File &objArquivo, S
 
 		if (RetryOrCheck == "RETRY")
 		{
-			LogTerm(String(F("SD: Falha na abertura do arquivo: ")) + FullPathFile);
+			LogTerm(String(F("SD: Failed in opening the file: ")) + FullPathFile);
 
 
 			while ((ContaTentativa <= SD_MAX_TENTATIVA_READ) && (SucessoTentativa == false))
 			{
-				LogTerm(F("SD: Realizando nova tentativa..."));
+				LogTerm(F("SD: Trying again..."));
 
 				// desliga sd
 				pinMode(SD_PINO, OUTPUT);
@@ -191,7 +191,7 @@ String SD_AbreArqTexto(String FullPathFile, SdFat &LeitorSD, File &objArquivo, S
 			}
 
 
-			ret = String(F("-1|Falha na abertura do arquivo: ")) + FullPathFile;
+			ret = String(F("-1|Failed in opening the file: ")) + FullPathFile;
 
 			return ret;	
 		}
@@ -200,9 +200,9 @@ String SD_AbreArqTexto(String FullPathFile, SdFat &LeitorSD, File &objArquivo, S
 
 		if (RetryOrCheck == "CHECK")
 		{
-			LogTerm(String(F("SD: Arquivo nao localizado: ")) + FullPathFile);
+			LogTerm(String(F("SD: File not found: ")) + FullPathFile);
 
-			ret = String(F("-2|Arquivo nao localizado: ")) + FullPathFile;
+			ret = String(F("-2|File not found: ")) + FullPathFile;
 
 			return ret;	
 		}
@@ -237,7 +237,12 @@ String SD_GetAllRegsFromFile(String FullPathFile, String aRetRegs[], int MaxSize
 	SdFat SD;
 	String retSD = F("");
 
+
+
+
 	retSD = SD_InicializaCartaoSD(SD);
+
+
 
 	if (retSD.substring(0, 1) != F("1"))
 	{
@@ -250,7 +255,7 @@ String SD_GetAllRegsFromFile(String FullPathFile, String aRetRegs[], int MaxSize
 	String retFile = F("");
 
 
-	
+
 
 	retFile = SD_AbreArqTexto(FullPathFile, SD, file, F("RETRY"));
 
@@ -264,11 +269,15 @@ String SD_GetAllRegsFromFile(String FullPathFile, String aRetRegs[], int MaxSize
 	else
 	{
 
+
+
+
 		if (ctDEBUG_MODE == true)
 		{
-			LogTerm(String(F("SD: Arquivo aberto com sucesso: ")) + FullPathFile);
+			LogTerm(String(F("SD: File opened with success: ")) + FullPathFile);
 		}
 		
+
 
 		int ContaReg = 0; 
 
@@ -277,6 +286,7 @@ String SD_GetAllRegsFromFile(String FullPathFile, String aRetRegs[], int MaxSize
 			//LogTerm(file.read());
 
 			CharAtual = file.read();
+			
 
 			if (CharAtual == 13)
 			{
@@ -317,13 +327,18 @@ String SD_GetAllRegsFromFile(String FullPathFile, String aRetRegs[], int MaxSize
 
 			//LogTerm(CharAtual);
 			
-		}	
+		}
 
-		LogTerm(F("Aquixpo2"));	
+
+
+
+	
 
 	}
 
 	file.close();
+
+
 
 	return ret;
 
@@ -378,7 +393,7 @@ String SD_GetFirstRegFromFile(String FullPathFile, String RetryOrCheck)
 
 		if (ctDEBUG_MODE == true)
 		{
-			LogTerm(String(F("SD: Arquivo aberto com sucesso: ")) + FullPathFile);
+			LogTerm(String(F("SD: File opened with success: ")) + FullPathFile);
 		}
 		
 
@@ -443,11 +458,11 @@ String SD_ApagaArquivo(String FullPathFile)
 
 	if (Arquivo_Temp.remove())
 	{
-		ret = String(F("1|Arquivo apagado com sucesso: ")) + FullPathFile;
+		ret = String(F("1|File deleted with success: ")) + FullPathFile;
 	}
 	else
 	{
-		ret = String(F("0|Nao foi possivel apagar o arquivo: ")) + FullPathFile;
+		ret = String(F("0|It wasnt possible to delete the file: ")) + FullPathFile;
 	}
 
 	return ret;
@@ -507,9 +522,9 @@ String SD_CreateNewUserFile(String IDUser, String Nome, String Nivel, String CPF
 	}
 	else
 	{
-		LogTerm(String(F("Nao foi possivel criar o arquivo:: ")) + FullPathFile_TEMP);
+		LogTerm(String(F("It wasnt possible to create the file: ")) + FullPathFile_TEMP);
 
-		ret = String(F("-2|Nao foi possivel criar o arquivo: ")) + FullPathFile_TEMP;
+		ret = String(F("-2|It wasnt possible to create the file: ")) + FullPathFile_TEMP;
 	}
 
 
@@ -614,17 +629,17 @@ String SD_RenameArquivo(String FullPathFile_Original, String FullPathFile_Destin
 
 	if (!Arquivo_Temp.isOpen()) 
 	{
-		ret = String(F("0|Nao foi possivel localizar o arquivo: ")) + FullPathFile_Original;
+		ret = String(F("0|It wasnt possible to rename the file: ")) + FullPathFile_Original;
 	}
 	else
 	{
 		if (Arquivo_Temp.rename(SD.vwd(), __FullPathFile_Destino)) 
 		{
-			ret = String(F("1|Arquivo renomeado com sucesso: ")) + FullPathFile_Original + String(F(" para ")) + FullPathFile_Destino;
+			ret = String(F("1|File renamed with success: ")) + FullPathFile_Original + String(F(" to ")) + FullPathFile_Destino;
 		}
 		else
 		{
-			ret = String(F("0|Nao foi possivel renomear o arquivo: ")) + FullPathFile_Original + String(F(" para ")) + FullPathFile_Destino;
+			ret = String(F("0|It wasnt possible to rename the file:: ")) + FullPathFile_Original + String(F(" to ")) + FullPathFile_Destino;
 		}
 	}
 
@@ -664,7 +679,7 @@ String SD_CopiaArquivo(String FullPathFile_Original, String FullPathFile_Destino
 
 	if (!Arquivo_Origem.isOpen()) 
 	{
-		ret = String(F("0|Nao foi possivel localizar o arquivo: ")) + FullPathFile_Original;
+		ret = String(F("0|It wasnt possible to locate the file: ")) + FullPathFile_Original;
 	}
 	else
 	{
@@ -677,7 +692,7 @@ String SD_CopiaArquivo(String FullPathFile_Original, String FullPathFile_Destino
 		Arquivo_Origem.close();
 		Arquivo_Destino.close();
 
-		ret = String(F("1|Arquivo copiado com sucesso: ")) + FullPathFile_Original + String(F(" para ")) + FullPathFile_Destino;
+		ret = String(F("1|File copied with success: ")) + FullPathFile_Original + String(F(" to ")) + FullPathFile_Destino;
 
 
 	}

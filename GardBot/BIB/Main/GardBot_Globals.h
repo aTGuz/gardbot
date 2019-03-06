@@ -1,6 +1,10 @@
 
 
 // RTC
+
+// IMPORTANT OBSERVATION: Im using brazilian date format (DD/MM/YYYY) because... im brazilian.
+// Any date in the system is currently being presented in the above format.
+// TODO: Make the date be any format we want, link american or brazilian
 #define RTC_CLK		7
 #define RTC_DATA	6
 #define RTC_RST		5
@@ -14,7 +18,7 @@
 
 
 // define the debug mode
-#define ctDEBUG_MODE false
+#define ctDEBUG_MODE true
 
 // Buzzer
 #define BUZZER_PINO 32
@@ -46,6 +50,15 @@ String gLOG_LogAtEvery;
 
 String gLOG_LastLogDateTime;
 
+
+
+// max number of plants controled by the system
+#define ctMAX_PLANTS 4 // total number, as read by humans. If it says 4 then there are exactly plants (doesnt start in zero)
+String gaPlants[ctMAX_PLANTS];
+
+
+
+
 void InitiateVars()
 {
 	gOperation_Mode = F("INITIALIZE");
@@ -55,9 +68,15 @@ void InitiateVars()
 	gRendered_OPERATION = false;
 	gRendered_LOGDATA = false;
 
+	// Loggins vars
 	gLOG_LogAtEvery = F("3S");
 	gLOG_LastLogDateTime = F("-1");
 
 
+	// main array with the plants controled
+	for (int x = 0 ; x <= ctMAX_PLANTS ; x++)
+	{
+		gaPlants[x] = F("");
+	}	 
 
 }

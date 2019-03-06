@@ -146,6 +146,7 @@ void setup()
     pinMode(BUZZER_PINO, OUTPUT);
 
 
+    CORE_ExecDefinePlantsFromSD();
 
     delay(1000);
 
